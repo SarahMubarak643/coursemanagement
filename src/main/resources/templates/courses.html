@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Course Management System</h1>
+    <p class="subtitle" th:text="${systemName}">COOP Training System</p>
+    <a class="btn" th:href="@{/courses/add}">+ Add New Course</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Duration (h)</th>
+            <th>Level</th>
+            <th>Active</th>
+            <th>Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.id}">1</td>
+            <td th:text="${course.name}">Course name</td>
+            <td th:text="${course.category}">Category</td>
+            <td th:text="${course.price}">0.0</td>
+            <td th:text="${course.durationHours}">0</td>
+            <td th:text="${course.level}">BEGINNER</td>
+            <td th:text="${course.active} ? 'Yes' : 'No'">Yes</td>
+            <td th:text="${course.code}">ABC-101</td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(courses)}">
+            <td colspan="8">No courses yet. Click "Add New Course" to create one.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
