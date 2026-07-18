@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Centralised exception handling for the REST API.
- * Converts exceptions into a clear, consistent JSON error response.
- */
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
