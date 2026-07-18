@@ -1,8 +1,6 @@
 package com.example.coursemanagement.exception;
 
-/**
- * Simple, consistent JSON error body returned by the GlobalExceptionHandler.
- */
+
 public class ErrorResponse {
 
     private int status;
