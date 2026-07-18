@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Service layer - all business logic for Course lives here.
- * Controllers must never talk to the repository directly.
- */
+
 @Service
 public class CourseService {
 
