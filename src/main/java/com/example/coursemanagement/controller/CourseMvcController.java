@@ -15,10 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * Simple Spring MVC + Thymeleaf controller.
- * Displays all courses in an HTML table and provides a form to add a new one.
- */
 @Controller
 @RequestMapping("/courses")
 public class CourseMvcController {
