@@ -11,11 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * REST API for Course Management.
- * The controller never talks to the repository directly - it always
- * goes through CourseService.
- */
+
 @RestController
 @RequestMapping("/api/courses")
 @Tag(name = "Courses", description = "Course Management REST API")
