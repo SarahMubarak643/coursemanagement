@@ -13,12 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
-/**
- * Spring Security configuration.
- * Uses database (JDBC) authentication - no JWT.
- * Passwords are stored using BCrypt.
- * Three roles are supported: EMPLOYEE, MANAGER, ADMIN.
- */
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -28,8 +23,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Uses Spring Security's default "users" / "authorities" JDBC schema.
-    // The tables and demo users are created by schema.sql / data.sql on startup.
+
     @Bean
     public JdbcUserDetailsManager userDetailsManager(DataSource dataSource) {
         return new JdbcUserDetailsManager(dataSource);
@@ -40,14 +34,14 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                // Public / infrastructure endpoints
+               
                 .requestMatchers("/actuator/health", "/actuator/info").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .requestMatchers("/css/**", "/webjars/**").permitAll()
-                // Thymeleaf MVC pages are viewable by any logged-in user via formLogin
+               
                 .requestMatchers("/courses/**").permitAll()
 
-                // REST API rules, by HTTP method
+
                 .requestMatchers(HttpMethod.GET, "/api/courses/**").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
                 .requestMatchers(HttpMethod.POST, "/api/courses/**").hasAnyRole("MANAGER", "ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/courses/**").hasAnyRole("MANAGER", "ADMIN")
